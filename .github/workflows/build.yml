@@ -1,0 +1,51 @@
+name: build
+
+on:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+      - name: Configure golang
+        uses: actions/setup-go@v3
+        with:
+          go-version-file: "go.mod"
+      - name: Verify dependencies
+        run: go mod verify
+      - name: Analyze with go vet
+        run: go vet ./...
+      - name: Analyze with gocyclo
+        run: |
+          go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
+          gocyclo -over 15 .
+          gocyclo -top 15 .
+      - name: Run static analysis
+        uses: dominikh/staticcheck-action@v1.2.0
+        with:
+          install-go: false
+      - name: Run tests
+        run: go test ./...
+      - name: Install gox
+        run: go install github.com/mitchellh/gox@latest
+      - name: Build binaries
+        run: gox -arch amd64 -os "windows linux darwin" -output "dist/vd_{{.OS}}_{{.Arch}}" ./app/vd
+      - name: Upload built artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: vd_windows_amd64.exe
+          path: ./dist/vd_windows_amd64.exe
+      - name: Upload built artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: vd_darwin_amd64
+          path: ./dist/vd_darwin_amd64
+      - name: Upload built artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: vd_linux_amd64
+          path: ./dist/vd_linux_amd64
