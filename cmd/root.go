@@ -50,7 +50,7 @@ func init() {
 }
 
 func configureViper() {
-	viper.SetConfigName("bulker")
+	viper.SetConfigName("vault-diff")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath(".")
 	viper.SetEnvPrefix("VD")
