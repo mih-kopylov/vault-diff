@@ -3,6 +3,7 @@ package cmd
 import (
 	"context"
 	"fmt"
+	"github.com/mih-kopylov/vault-diff/internal/ui"
 	"github.com/mih-kopylov/vault-diff/internal/utils"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -20,7 +21,11 @@ func CreateRootCommand(applicationVersion string) *cobra.Command {
 			configureLogrus()
 		},
 		RunE: func(cmd *cobra.Command, args []string) error {
-			logrus.Infof("hello from vault-diff")
+			err := ui.MainLoop()
+			if err != nil {
+				return err
+			}
+
 			return nil
 		},
 	}
@@ -33,6 +38,17 @@ func CreateRootCommand(applicationVersion string) *cobra.Command {
 
 	result.PersistentFlags().Bool("debug", false, "Enable debug level logging. Hide progress bar as well.")
 	utils.BindFlag(result.PersistentFlags().Lookup("debug"), "debug")
+
+	result.PersistentFlags().StringP("url", "u", "", "Address of Vault service.")
+	utils.BindFlag(result.PersistentFlags().Lookup("url"), "url")
+	utils.MarkFlagRequiredOrFail(result.PersistentFlags(), "url")
+
+	result.PersistentFlags().StringP("token", "t", "", "Token to access Vault service.")
+	utils.BindFlag(result.PersistentFlags().Lookup("token"), "token")
+	utils.MarkFlagRequiredOrFail(result.PersistentFlags(), "token")
+
+	result.PersistentFlags().StringP("path", "p", "kv", "KV engine path.")
+	utils.BindFlag(result.PersistentFlags().Lookup("path"), "path")
 
 	return result
 }
