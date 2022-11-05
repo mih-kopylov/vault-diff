@@ -19,10 +19,6 @@ func CreateRootCommand(applicationVersion string) *cobra.Command {
 		PersistentPreRun: func(cmd *cobra.Command, args []string) {
 			configureLogrus()
 		},
-		RunE: func(cmd *cobra.Command, args []string) error {
-			logrus.Infof("hello from vault-diff")
-			return nil
-		},
 	}
 
 	result.SetVersionTemplate("{{.Version}}")
@@ -33,6 +29,19 @@ func CreateRootCommand(applicationVersion string) *cobra.Command {
 
 	result.PersistentFlags().Bool("debug", false, "Enable debug level logging. Hide progress bar as well.")
 	utils.BindFlag(result.PersistentFlags().Lookup("debug"), "debug")
+
+	result.PersistentFlags().StringP("url", "u", "", "Address of Vault service.")
+	utils.BindFlag(result.PersistentFlags().Lookup("url"), "url")
+	utils.MarkFlagRequiredOrFail(result.PersistentFlags(), "url")
+
+	result.PersistentFlags().StringP("token", "t", "", "Token to access Vault service.")
+	utils.BindFlag(result.PersistentFlags().Lookup("token"), "token")
+	utils.MarkFlagRequiredOrFail(result.PersistentFlags(), "token")
+
+	result.PersistentFlags().StringP("path", "p", "kv", "KV engine path.")
+	utils.BindFlag(result.PersistentFlags().Lookup("path"), "path")
+
+	result.AddCommand(CreateDiffCommand())
 
 	return result
 }
