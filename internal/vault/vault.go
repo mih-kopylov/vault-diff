@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/hashicorp/vault/api"
 	"github.com/spf13/viper"
+	"strings"
 )
 
 func NewClient() (*api.Client, error) {
@@ -13,13 +14,32 @@ func NewClient() (*api.Client, error) {
 }
 
 func GetAvailableSecrets(client *api.Client) ([]string, error) {
-	list, err := client.Logical().List(fmt.Sprintf("%v/metadata", viper.GetString("path")))
+	return getSecretsInPath(client, "")
+}
+
+func getSecretsInPath(client *api.Client, path string) ([]string, error) {
+	list, err := client.Logical().List(fmt.Sprintf("%v/metadata/%v", viper.GetString("path"), path))
 	if err != nil {
 		return nil, err
 	}
 	var result []string
 	for _, element := range list.Data["keys"].([]any) {
-		result = append(result, element.(string))
+		stringElement := path + element.(string)
+		if isDirectoryElement(stringElement) {
+			innerElements, err := getSecretsInPath(client, stringElement)
+			if err != nil {
+				return nil, err
+			}
+			for _, innerElement := range innerElements {
+				result = append(result, innerElement)
+			}
+		} else {
+			result = append(result, stringElement)
+		}
 	}
 	return result, err
+}
+
+func isDirectoryElement(element string) bool {
+	return strings.HasSuffix(element, "/")
 }

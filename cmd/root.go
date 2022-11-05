@@ -21,7 +21,7 @@ func CreateRootCommand(applicationVersion string) *cobra.Command {
 			configureLogrus()
 		},
 		RunE: func(cmd *cobra.Command, args []string) error {
-			err := ui.MainLoop()
+			err := ui.BuildGui()
 			if err != nil {
 				return err
 			}

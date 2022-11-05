@@ -1,47 +1,77 @@
 package ui
 
 import (
-	"fmt"
 	"github.com/jroimartin/gocui"
-	"github.com/mih-kopylov/vault-diff/internal/vault"
-	"github.com/spf13/viper"
 )
 
-func mainLayout(g *gocui.Gui) error {
-	maxX, maxY := g.Size()
-	v, err := g.SetView("main", 0, 0, maxX-1, maxY-1)
+func BuildGui() error {
+	gui, err := gocui.NewGui(gocui.OutputNormal)
 	if err != nil {
-		if err != gocui.ErrUnknownView {
+		return err
+	}
+	defer gui.Close()
+
+	gui.Highlight = true
+	gui.SelFgColor = gocui.ColorGreen
+
+	gui.SetManagerFunc(uiManager)
+	gui.Update(func(gui *gocui.Gui) error {
+		err := initContent()
+		if err != nil {
 			return err
 		}
-		v.Title = fmt.Sprintf("Vault Diff :: %s", viper.Get("url"))
-		v.Wrap = true
+		SelectLeftView.Draw()
+		SelectRightView.Draw()
 
-	}
+		return nil
+	})
 
-	client, err := vault.NewClient()
+	err = setHotkeys(gui)
 	if err != nil {
 		return err
 	}
 
-	secrets, err := vault.GetAvailableSecrets(client)
-	if err != nil {
-		return err
-	}
-
-	v.Clear()
-	_, err = fmt.Fprintf(v, `Hello world!
-	
-	secrets = %v
-	
-	Counter = %v`, secrets, content.counter)
-	if err != nil {
+	err = gui.MainLoop()
+	if err != nil && err != gocui.ErrQuit {
 		return err
 	}
 
 	return nil
 }
 
-func Quit(g *gocui.Gui, v *gocui.View) error {
-	return gocui.ErrQuit
+const (
+	selectLeftViewName  = "selectLeft"
+	selectRightViewName = "selectRight"
+)
+
+var (
+	SelectLeftView  *SelectView
+	SelectRightView *SelectView
+)
+
+func uiManager(g *gocui.Gui) error {
+	maxX, maxY := g.Size()
+	var err error
+
+	v, err := g.SetView(selectLeftViewName, 0, 0, maxX/2-1, maxY-1)
+	if err != nil {
+		if err != gocui.ErrUnknownView {
+			return err
+		}
+		_, err = g.SetCurrentView(selectLeftViewName)
+		if err != nil {
+			return err
+		}
+		SelectLeftView = newSelectView(v)
+	}
+
+	v, err = g.SetView(selectRightViewName, maxX/2, 0, maxX-1, maxY-1)
+	if err != nil {
+		if err != gocui.ErrUnknownView {
+			return err
+		}
+		SelectRightView = newSelectView(v)
+	}
+
+	return nil
 }
