@@ -69,3 +69,6 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+// v1.4.7 breaks compilation
+replace github.com/hashicorp/go-plugin v1.4.7 => github.com/hashicorp/go-plugin v1.4.6
