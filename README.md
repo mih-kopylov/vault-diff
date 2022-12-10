@@ -31,3 +31,5 @@ It can also compare different secrets of any versions.
 ```shell
 vd diff --url http://localhost:8200 --token hvs.replace-token --left /my/secret:15 --right /my/another/secret:33 
 ```
+
+![Example](img/example.png "Example")
