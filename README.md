@@ -8,7 +8,7 @@ A simple CLI utility to observe changes in non-sealed Vault secrets, like KV.
 [![Go Doc](https://img.shields.io/badge/godoc-reference-blue.svg?style=for-the-badge)](http://godoc.org/github.com/mih-kopylov/vault-diff)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mih-kopylov/vault-diff?style=for-the-badge)](https://goreportcard.com/report/github.com/mih-kopylov/vault-diff)
 
-## Install
+## Installation
 
 Run
 
