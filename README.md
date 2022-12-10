@@ -8,14 +8,26 @@ A simple CLI utility to observe changes in non-sealed Vault secrets, like KV.
 [![Go Doc](https://img.shields.io/badge/godoc-reference-blue.svg?style=for-the-badge)](http://godoc.org/github.com/mih-kopylov/vault-diff)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mih-kopylov/vault-diff?style=for-the-badge)](https://goreportcard.com/report/github.com/mih-kopylov/vault-diff)
 
+## Install
+
+Run
+
+```shell
+go install github.com/mih-kopylov/vault-diff/app/vd@latest
+```
+
+Or just download a binary from [the latest](https://github.com/mih-kopylov/vault-diff/releases/latest) release
+
 ## Usage
 
 The following command will show difference between 15 and 16 versions of `/my/secret` KV secret.
+
 ```shell
 vd diff --url http://localhost:8200 --token hvs.replace-token --left /my/secret:15 --right /my/secret:16 
 ```
 
 It can also compare different secrets of any versions.
+
 ```shell
 vd diff --url http://localhost:8200 --token hvs.replace-token --left /my/secret:15 --right /my/another/secret:33 
 ```
