@@ -19,6 +19,8 @@ jobs:
           go mod tidy
       - name: Create pull request
         uses: peter-evans/create-pull-request@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.UPGRADE_DEPENDENCIES }}
         with:
           commit-message: "[CI] Upgrade dependencies"
           branch: upgrade-dependencies
