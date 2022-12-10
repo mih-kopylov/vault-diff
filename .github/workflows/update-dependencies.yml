@@ -17,6 +17,7 @@ jobs:
         run: |
           go get -u -t ./...
           go mod tidy
+          git push origin -d upgrade-dependencies || echo "previous branch not found"
       - name: Create pull request
         uses: peter-evans/create-pull-request@v4
         env:
