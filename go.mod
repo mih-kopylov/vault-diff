@@ -3,8 +3,9 @@ module github.com/mih-kopylov/vault-diff
 go 1.19
 
 require (
+	github.com/fatih/color v1.13.0
 	github.com/hashicorp/vault/api v1.8.2
-	github.com/sergi/go-diff v1.2.0
+	github.com/hexops/gotextdiff v1.0.3
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/cobra v1.6.1
 	github.com/spf13/pflag v1.0.5
@@ -16,7 +17,6 @@ require (
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
-	github.com/fatih/color v1.13.0 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
