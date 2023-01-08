@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `vd ui` command that draws user interface
+
 ## [0.2.1] - 2022-12-10
 
 ### Fixed
