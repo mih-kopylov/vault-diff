@@ -42,6 +42,7 @@ func CreateRootCommand(applicationVersion string) *cobra.Command {
 	utils.BindFlag(result.PersistentFlags().Lookup("path"), "path")
 
 	result.AddCommand(CreateDiffCommand())
+	result.AddCommand(CreateUiCommand())
 
 	return result
 }
