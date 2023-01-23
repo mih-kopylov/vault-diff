@@ -3,7 +3,7 @@ module github.com/mih-kopylov/vault-diff
 go 1.19
 
 require (
-	github.com/fatih/color v1.13.0
+	github.com/fatih/color v1.14.0
 	github.com/gdamore/tcell/v2 v2.5.4
 	github.com/hashicorp/vault/api v1.8.3
 	github.com/hexops/gotextdiff v1.0.3
