@@ -1,0 +1,19 @@
+version: 2
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/"
+    allow:
+      - dependency-type: "all"
+    assignees:
+      - "mih-kopylov"
+    reviewers:
+      - "mih-kopylov"
+    schedule:
+      interval: "daily"
+      time: "11:20"
+      timezone: "Europe/Moscow"
+    commit-message:
+      prefix: "[CI]"
+    open-pull-requests-limit: 100
+    pull-request-branch-name:
+      separator: "-"
