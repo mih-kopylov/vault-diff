@@ -7,7 +7,7 @@ require (
 	github.com/gdamore/tcell/v2 v2.5.4
 	github.com/hashicorp/vault/api v1.8.3
 	github.com/hexops/gotextdiff v1.0.3
-	github.com/rivo/tview v0.0.0-20230104153304-892d1a2eb0da
+	github.com/rivo/tview v0.0.0-20230203122838-f0550c7918da
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/cobra v1.6.1
 	github.com/spf13/pflag v1.0.5
@@ -68,7 +68,7 @@ require (
 	golang.org/x/term v0.4.0 // indirect
 	golang.org/x/text v0.6.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
-	google.golang.org/genproto v0.0.0-20230127162408-596548ed4efa // indirect
+	google.golang.org/genproto v0.0.0-20230202175211-008b39050e57 // indirect
 	google.golang.org/grpc v1.52.3 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
