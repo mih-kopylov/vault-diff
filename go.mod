@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/fatih/color v1.14.1
-	github.com/gdamore/tcell/v2 v2.5.4
+	github.com/gdamore/tcell/v2 v2.6.0
 	github.com/hashicorp/vault/api v1.9.0
 	github.com/hexops/gotextdiff v1.0.3
 	github.com/rivo/tview v0.0.0-20230208211350-7dfff1ce7854
