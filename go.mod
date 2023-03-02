@@ -7,7 +7,7 @@ require (
 	github.com/gdamore/tcell/v2 v2.6.0
 	github.com/hashicorp/vault/api v1.9.0
 	github.com/hexops/gotextdiff v1.0.3
-	github.com/rivo/tview v0.0.0-20230208211350-7dfff1ce7854
+	github.com/rivo/tview v0.0.0-20230226195229-47e7db7885b4
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/cobra v1.6.1
 	github.com/spf13/pflag v1.0.5
@@ -37,7 +37,7 @@ require (
 	github.com/mattn/go-runewidth v0.0.14 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
-	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
+	github.com/pelletier/go-toml/v2 v2.0.7 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
