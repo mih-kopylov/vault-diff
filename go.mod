@@ -8,7 +8,7 @@ require (
 	github.com/hashicorp/vault/api v1.9.1
 	github.com/hexops/gotextdiff v1.0.3
 	github.com/rivo/tview v0.0.0-20230511053024-822bd067b165
-	github.com/sirupsen/logrus v1.9.1
+	github.com/sirupsen/logrus v1.9.2
 	github.com/spf13/cobra v1.7.0
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.15.0
