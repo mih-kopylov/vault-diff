@@ -7,7 +7,7 @@ require (
 	github.com/gdamore/tcell/v2 v2.7.0
 	github.com/hashicorp/vault/api v1.10.0
 	github.com/hexops/gotextdiff v1.0.3
-	github.com/rivo/tview v0.0.0-20240101144852-b3bd1aa5e9f2
+	github.com/rivo/tview v0.0.0-20240116070845-bf8f1c43e46c
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.8.0
 	github.com/spf13/pflag v1.0.5
