@@ -7,7 +7,7 @@ require (
 	github.com/gdamore/tcell/v2 v2.7.0
 	github.com/hashicorp/vault/api v1.10.0
 	github.com/hexops/gotextdiff v1.0.3
-	github.com/rivo/tview v0.0.0-20240116070845-bf8f1c43e46c
+	github.com/rivo/tview v0.0.0-20240120095012-7568c3f71cfa
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.8.0
 	github.com/spf13/pflag v1.0.5
@@ -48,7 +48,7 @@ require (
 	github.com/subosito/gotenv v1.6.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/crypto v0.18.0 // indirect
-	golang.org/x/exp v0.0.0-20240112132812-db7319d0e0e3 // indirect
+	golang.org/x/exp v0.0.0-20240119083558-1b970713d09a // indirect
 	golang.org/x/net v0.20.0 // indirect
 	golang.org/x/sys v0.16.0 // indirect
 	golang.org/x/term v0.16.0 // indirect
