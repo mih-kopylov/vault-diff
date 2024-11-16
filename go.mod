@@ -1,10 +1,11 @@
 module github.com/mih-kopylov/vault-diff
 
-go 1.20
+go 1.23
 
 require (
 	github.com/fatih/color v1.17.0
 	github.com/gdamore/tcell/v2 v2.7.4
+	github.com/go-jose/go-jose/v4 v4.0.4
 	github.com/hashicorp/vault/api v1.14.0
 	github.com/hexops/gotextdiff v1.0.3
 	github.com/rivo/tview v0.0.0-20240818110301-fd649dbf1223
@@ -12,14 +13,12 @@ require (
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.19.0
-	gopkg.in/square/go-jose.v2 v2.6.0
 )
 
 require (
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/gdamore/encoding v1.0.1 // indirect
-	github.com/go-jose/go-jose/v4 v4.0.4 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect

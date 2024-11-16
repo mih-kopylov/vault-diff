@@ -3,10 +3,11 @@ package vault
 import (
 	"context"
 	"fmt"
+	"strings"
+
+	"github.com/go-jose/go-jose/v4/json"
 	"github.com/hashicorp/vault/api"
 	"github.com/spf13/viper"
-	"gopkg.in/square/go-jose.v2/json"
-	"strings"
 )
 
 func NewClient() (*api.Client, error) {
